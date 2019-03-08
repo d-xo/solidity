@@ -30,6 +30,9 @@ add_executable(soltest ${sources} ${headers}
     ${libsolidity_sources} ${libsolidity_headers}
     ${libsolidity_util_sources} ${libsolidity_util_headers}
 )
+
+add_subdirectory(tools)
+
 target_link_libraries(soltest PRIVATE libsolc yul solidity yulInterpreter evmasm devcore ${Boost_PROGRAM_OPTIONS_LIBRARIES} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARIES})
 
 if (LLL)
@@ -40,5 +43,3 @@ endif()
 if (NOT Boost_USE_STATIC_LIBS)
     target_compile_definitions(soltest PUBLIC -DBOOST_TEST_DYN_LINK)
 endif()
-
-add_subdirectory(tools)
